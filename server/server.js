@@ -1,8 +1,10 @@
 const express = require ('express')
+const cors = require('cors')
 const app = express()
 const mongoose = require('mongoose')
 const PORT = 3001
 const {MONGOURI} = require('./keys')
+
 
 
 
@@ -20,9 +22,12 @@ mongoose.connection.on('error',(err) =>{
 require('./models/user')
 require('./models/post')
 
+app.use(cors())
 app.use(express.json())
 app.use(require('./routes/auth'))
 app.use(require('./routes/post'))
+
+
 
 
 app.listen(PORT, () => {
