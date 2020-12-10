@@ -15,7 +15,8 @@ const SignIn = ()=>{
         fetch("/signin",{
             method:"post",
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+               
             },
             body:JSON.stringify({
                 password,
@@ -29,19 +30,21 @@ const SignIn = ()=>{
               M.toast({html: data.error,classes:"#c62828 red darken-3"})
             }
             else{
+                localStorage.setItem("jwt",data.token)
+                localStorage.setItem("user",JSON.stringify(data.user))
                 M.toast({html: "SIGN IN SUCCESSFUL", classes:"#43a047 green darken-1"})
                 history.push('/')
             }
         }) .catch(err =>{
             console.log(err)
-        })
+        }) 
     }
     return(
         <div className="mycard">
             <div className="card auth-card input-field">
                 <h2> FlashBack</h2>
                 <input type ="text" placeholder="email" value={email}onChange={(e)=>setEmail(e.target.value)} />
-                <input type ="text" placeholder="password" value={password}onChange={(e)=>setPassword(e.target.value)} />
+                <input type ="password" placeholder="password" value={password}onChange={(e)=>setPassword(e.target.value)} />
                 <button className="btn waves-effect waves-light #64b5f6 blue darken-1" style={{ marginTop:"20px"}} onClick={()=>PostData()}>
                     Sign In 
                 </button>
