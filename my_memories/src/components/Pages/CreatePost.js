@@ -1,6 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 const CreatePost = ()=>{
+const[title,setTitle] = useState("")
+const[body,setBody] = useState("")
+
     return(
         <div className="card input-field" 
         style={{

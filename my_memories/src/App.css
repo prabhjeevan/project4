@@ -48,3 +48,11 @@ a {
   margin: 26px auto;
   height: max-content;
 }
+
+#toast-container{
+  top: 550px !important;
+  right: 44% !important;
+  left: auto!important;
+  width: 250px !important;
+  text-align: center !important;
+}
