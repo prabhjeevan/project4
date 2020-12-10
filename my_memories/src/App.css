@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Marck+Script&display=swap');
+
+
+a {
+  color: black !important;
+}
+
+.brand-logo, h2{
+  font-family: 'Space Mono', monospace;
+  font-family: 'Marck Script', cursive;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.mycard{
+  margin-top: 50px;
+}
+
+.auth-card{
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid rgb(8,93,252) !important;
+  box-shadow: 0 1px 0 0 rgb(8,93,252) !important;
+}
+
+.profileposts{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  width: 30%;
+}
+
+.home{
+  
+}
+
+.home-card{
+  max-width: 600px;
+  margin: 26px auto;
+  height: max-content;
+}
