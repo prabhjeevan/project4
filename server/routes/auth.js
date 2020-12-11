@@ -8,7 +8,7 @@ const { JWT_SECRET } = require('../keys')
 const requireLogin = require('../middleware/requireLogin')
 
 
-router.post('/signup',(req,res)=>{
+router.post('/signup', (req,res)=>{
     const {name,email,password} = req.body 
     if(!email || !password || !name){
        return res.status(422).json({error:"please add all the fields"})
