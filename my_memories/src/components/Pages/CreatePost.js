@@ -69,12 +69,12 @@ const postDetails = ()=>{
             padding:"20px",
             textAlign:"center"
         }}>
-            <input type="text" placeholder="title" value={title} onChange={(e)=>setTitle(e.target.value)} />
-            <input type="text" placeholder="description"  value={body} onChange={(e)=>setBody(e.target.value)}/>
+            <input type="text" placeholder="Post Title" value={title} onChange={(e)=>setTitle(e.target.value)} />
+            <input type="text" placeholder="Description"  value={body} onChange={(e)=>setBody(e.target.value)}/>
             <div className="file-field input-field">
-                <div className="btn #64b5f6 blue darken-1">
+                <div className="btn #64b5f6 blue darken-1" id="upload" >
                     <span>Upload Image</span>
-                    <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
+                    <input id="uploadinput" type="file" onChange={(e)=>setImage(e.target.files[0])} />
                 </div>
                 <div className="file-path-wrapper">
                     <input className="file-path validate" type="text" /> 

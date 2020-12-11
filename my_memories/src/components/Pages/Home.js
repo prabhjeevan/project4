@@ -1,44 +1,103 @@
-import React from 'react'
+import React,{useState,useEffect, useCallback, useContext} from 'react'
+import {UserContext} from '../../App'
+
 
 const Home = ()=>{
+    const [data,setData]=useState([])
+    const{state,dispatch} = useContext(UserContext)
+    useEffect(()=>{
+        fetch('/allposts',{
+            headers:{
+                "Authorization":"Bearer "+localStorage.getItem("jwt")
+            }
+        }).then(res=>res.json())
+        .then(result =>{
+            setData(result.posts)
+        }) 
+    },[])
+
+    const likePost = (id)=>{
+        fetch('/like',{
+            method:"put",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization": "Bearer "+localStorage.getItem("jwt")
+            },
+            body: JSON.stringify({
+                postId:id
+            })
+        }).then(res=>res.json())
+        .then(result=>{
+            const newData = data.map(item=>{
+                if(item._id===result._id){
+                    return result
+                }else{
+                    return item
+                }
+            })
+            setData(newData)
+        }).catch(err =>{
+            console.log(err)
+        })
+    }
+    const unlikePost = (id)=>{
+        fetch('/unlike',{
+            method:"put",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization": "Bearer "+localStorage.getItem("jwt")
+            },
+            body: JSON.stringify({
+                postId:id
+            })
+        }).then(res=>res.json())
+        .then(result=>{
+            const newData = data.map(item=>{
+                if(item._id===result._id){
+                    return result
+                }else{
+                    return item
+                }
+            })
+            setData(newData)
+        }).catch(err =>{
+            console.log(err)
+        })
+    }
     return(
         <div className="home">
-            <div className="card home-card">
-                <h5>Prabh</h5>
-                <div className="card-image">
-                    <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80" />
-                </div>
-                <div className="card-content">
-                    <i className="material-icons" style={{}}>favorite</i>
-                    <h6>title</h6>
-                    <p>description</p>
-                    <input type="text" placeholder="Add a Comment" />
-                </div>
-            </div>
-            <div className="card home-card">
-                <h5>Prabh</h5>
-                <div className="card-image">
-                    <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80" />
-                </div>
-                <div className="card-content">
-                 <i className="material-icons" style={{}}>favorite</i>
-                    <h6>title</h6>
-                    <p>description</p>
-                    <input type="text" placeholder="Add a Comment" />
-                </div>
-            </div>
-            <div className="card home-card">
-                <h5>Prabh</h5>
-                <div className="card-image">
-                    <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80" />
-                </div>
-                <div className="card-content">
-                    <i className="material-icons" style={{}}>favorite</i>
-                    <h6>title</h6>
-                    <p>description</p>
-                    <input type="text" placeholder="Add a Comment" />
-                </div>
-            </div>
+            {
+                data.map(item=>{
+                    return(
+                        <div className="card home-card" key={item._id}>
+                            <h5 id="userpostedby">{item.postedBy.name}</h5>
+                            <div className="card-image">
+                                <img src={item.photo}/>
+                            </div>
+                            
+                            <div className="card-content">
+                                {item.likes.includes(state._id)
+                                ?
+                                [<i className="material-icons" style={{color:"red"}}>favorite</i>, 
+                                <i className="material-icons" style={{}}
+                                onClick={()=>{unlikePost(item._id)}}
+                                >thumb_down</i>]
+                                :
+                                [<i className="material-icons" style={{color:"red"}}>favorite_border</i>, 
+                                <i className="material-icons" style={{}} 
+                                onClick={()=>{likePost(item._id)}}
+                                >thumb_up</i>]
+                                }
+                                <h6>{item.likes.length} likes</h6>
+                                <h6 id="captiontitle">{item.title}</h6>
+                                <p id="description">{item.body}</p>
+                                <input type="text" placeholder="Add a Comment" />
+                            </div> 
+                        </div>
+                    )
+                })
+            }
+            
         </div>
     )
 }

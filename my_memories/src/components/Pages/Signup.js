@@ -43,15 +43,15 @@ const SignIn = ()=>{
     return(
         <div className="mycard">
             <div className="card auth-card input-field">
-                <h2> FlashBack</h2>
-                <input type ="text" placeholder="name" value={name}onChange={(e)=>setName(e.target.value)} />
-                <input type ="text" placeholder="email" value={email}onChange={(e)=>setEmail(e.target.value)} />
-                <input type ="password" placeholder="password" value={password}onChange={(e)=>setPassword(e.target.value)} />
+             
+                <input type ="text" placeholder="NAME" value={name}onChange={(e)=>setName(e.target.value)} />
+                <input type ="text" placeholder="EMAIL" value={email}onChange={(e)=>setEmail(e.target.value)} />
+                <input type ="password" placeholder="PASSWORD" value={password}onChange={(e)=>setPassword(e.target.value)} />
                 <button className="btn waves-effect waves-light #64b5f6 blue darken-1" onClick={()=>PostData()} style={{ marginTop:"20px"}} >
                     Sign Up 
                 </button>
                 <h5>
-                    <Link to="/signin" style={{ fontSize:"15px"}}>Have an account?</Link>
+                    <Link to="/signin" style={{ fontSize:"15px", padding:"5px"}}>Have an account?</Link>
                 </h5>
             </div>
         </div>

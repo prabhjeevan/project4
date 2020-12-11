@@ -2,8 +2,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Marck+Script&display=swap');
 
+body{
+  background-image: url(https://images.unsplash.com/photo-1477574901123-6b1db202feff?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80);
+}
 
-a {
+nav{
+  background-color: rgba(167, 167, 167, 0.74) !important;
+  color: white !important;
+  margin-bottom: 50px;
+}
+
+nav a {
+  color: white !important;
+  background-color: grey !important;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 20px !important;
+  font-weight: bolder;
+
+}
+a:hover{
+  cursor: pointer;
+  background: lightgray !important ;
+  font-size: 20px;
   color: black !important;
 }
 
@@ -11,6 +31,8 @@ a {
   font-family: 'Space Mono', monospace;
   font-family: 'Marck Script', cursive;
   font-family: 'Julius Sans One', sans-serif;
+  margin-left: 44%;
+  font-size: 40px !important;
 }
 
 .mycard{
@@ -22,9 +44,16 @@ a {
   text-align: center;
   max-width: 400px;
   margin: 10px auto;
+
 }
 
 .input-field input[type=text]:focus {
+  border-bottom: 1px solid rgb(8,93,252) !important;
+  box-shadow: 0 1px 0 0 rgb(8,93,252) !important;
+  
+}
+
+.input-field input[type=password]:focus {
   border-bottom: 1px solid rgb(8,93,252) !important;
   box-shadow: 0 1px 0 0 rgb(8,93,252) !important;
 }
@@ -33,20 +62,21 @@ a {
   display:flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-bottom: 10px !important;
+  
 }
 
 .item {
   width: 30%;
 }
 
-.home{
-  
-}
+
 
 .home-card{
   max-width: 600px;
   margin: 26px auto;
   height: max-content;
+
 }
 
 #toast-container{
@@ -56,3 +86,43 @@ a {
   width: 250px !important;
   text-align: center !important;
 }
+
+.logoutbtn:hover{
+  cursor: pointer;
+  background: lightgray !important ;
+  padding:24px;
+  padding-bottom: 23px;
+  font-size: 20px;
+  color: black !important;
+}
+.logoutbtn{
+  background-color: grey !important;
+  padding: 21px;
+  padding-bottom: 20px;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 20px !important;
+  color: white !important;
+  font-weight: bolder;
+}
+
+.card{
+
+  background-color: rgba(12, 12, 12, 0.801) !important;
+  text-align: center !important;
+  color: white !important;
+  
+}
+
+.card input{
+  text-align: center;
+  color: white !important;
+}
+
+#profilediv{
+  background-color: rgba(255, 255, 255, 0.801) !important;
+  padding: 15px;
+  border-radius: 30px;
+  height: 700px;
+}
+
+

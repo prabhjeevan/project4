@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext,} from 'react'
 import{Link, useHistory} from 'react-router-dom'
+import {UserContext} from '../../App'
 import M from 'materialize-css'
 
 const SignIn = ()=>{
+    const {state, dispatch} = useContext(UserContext)
     const history =useHistory()
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
@@ -32,6 +34,7 @@ const SignIn = ()=>{
             else{
                 localStorage.setItem("jwt",data.token)
                 localStorage.setItem("user",JSON.stringify(data.user))
+                dispatch({type:"USER", payload:data.user})
                 M.toast({html: "SIGN IN SUCCESSFUL", classes:"#43a047 green darken-1"})
                 history.push('/')
             }
@@ -42,14 +45,14 @@ const SignIn = ()=>{
     return(
         <div className="mycard">
             <div className="card auth-card input-field">
-                <h2> FlashBack</h2>
-                <input type ="text" placeholder="email" value={email}onChange={(e)=>setEmail(e.target.value)} />
-                <input type ="password" placeholder="password" value={password}onChange={(e)=>setPassword(e.target.value)} />
+               
+                <input type ="text" placeholder="EMAIL" value={email}onChange={(e)=>setEmail(e.target.value)} />
+                <input type ="password" placeholder="PASSWORD" value={password}onChange={(e)=>setPassword(e.target.value)} />
                 <button className="btn waves-effect waves-light #64b5f6 blue darken-1" style={{ marginTop:"20px"}} onClick={()=>PostData()}>
                     Sign In 
                 </button>
                 <h5>
-                    <Link to="/signup" style={{ fontSize:"15px"}}>Don't Have an account?</Link>
+                    <Link to="/signup" style={{ fontSize:"15px", padding:"5px"}}>Don't Have an account?</Link>
                 </h5>
             </div>
         </div>
